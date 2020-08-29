@@ -1,0 +1,43 @@
+.fa-sort, .listbtn {
+  position: relative;
+  float: right;
+}
+
+.listbtn {
+  height: 35px;
+}
+
+.tabledemo {
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow: auto;
+  box-shadow: 0 8px 8px rgba(1, 67, 163, .24), 0 0 8px rgba(1, 67, 163, .12), 0 6px 18px rgba(43, 133, 231, .12);
+}
+
+.tabledata {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.search {
+  border: 1px solid #eee;
+  background: #fafafa;
+  height: 35px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+table {
+  table-layout: fixed;
+}
+
+table td, table th {
+  overflow: hidden;
+  white-space: nowrap;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}

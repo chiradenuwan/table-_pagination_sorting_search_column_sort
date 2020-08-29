@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row">
+    <label class="font-weight-light mt-5 mb-5" style="font-family: Ubuntu;font-size: 25px;">Table Pagination , Sorting ,
+      Search , Column Sort</label>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <form>
+      <div class="form-row">
+        <div class="col-7">
+          <input [(ngModel)]="searchText" class="search" id="search" name="search" placeholder="Search" type="search">
+        </div>
+        <div class="col">
+          <button aria-expanded="false" aria-haspopup="true" class="listbtn border-0 m-0 dropdown-toggle"
+                  data-toggle="dropdown"
+                  type="button">
+            <i class="fa fa-list"></i>
+          </button>
+          <div class="dropdown-menu">
+            <ul style="list-style: none">
+              <li (click)="remove($event)">
+                <input id="checkid" type="checkbox" value="col1">
+                <label class="ml-3 font-weight-light" for="checkid">Id</label>
+              </li>
+              <li (click)="remove($event)">
+                <input id="name" type="checkbox" value="col2"/>
+                <label class="ml-3 font-weight-light" for="name">Name</label>
+              </li>
+              <li (click)="remove($event)">
+                <input id="postion" type="checkbox" value="col3"/>
+                <label class="ml-3 font-weight-light" for="postion">Position</label>
+              </li>
+              <li (click)="remove($event)">
+                <input id="office" type="checkbox" value="col4"/>
+                <label class="ml-3 font-weight-light" for="office">Office</label>
+              </li>
+              <li (click)="remove($event)">
+                <input id="age" type="checkbox" value="col5"/>
+                <label class="ml-3 font-weight-light" for="age">Age</label>
+              </li>
+              <li (click)="remove($event)">
+                <input id="startdate" type="checkbox" value="col6"/>
+                <label class="ml-3 font-weight-light" for="startdate">Start date</label>
+              </li>
+              <li (click)="remove($event)">
+                <input id="salary" type="checkbox" value="col7"/>
+                <label class="ml-3 font-weight-light" for="salary">Salary</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="tabledemo table-responsive table table-striped table-bordered">
+      <table class="table tabledata table-striped table-hover" id="myTable2">
+        <thead>
+        <tr>
+          <th [hidden]="col1==='col1'">Id <i (click)="sortTable(0)" class="fa fa-sort"></i></th>
+          <th [hidden]="col2==='col2'">Name <i (click)="sortTable(1)" class="fa fa-sort"></i></th>
+          <th [hidden]="col3==='col3'">Position <i (click)="sortTable(2)" class="fa fa-sort"></i></th>
+          <th [hidden]="col4==='col4'">Office <i (click)="sortTable(3)" class="fa fa-sort"></i></th>
+          <th [hidden]="col5==='col5'">Age <i (click)="sortTable(4)" class="fa fa-sort"></i></th>
+          <th [hidden]="col6==='col6'">Start date <i (click)="sortTable(5)" class="fa fa-sort"></i></th>
+          <th [hidden]="col7==='col7'">Salary <i (click)="sortTable(6)" class="fa fa-sort"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          *ngFor="let data of person | filter : searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ;let i = index">
+          <td [hidden]="col1==='col1'">{{data.id}}</td>
+          <td [hidden]="col2==='col2'">{{data.name}}</td>
+          <td [hidden]="col3==='col3'">{{data.position}}</td>
+          <td [hidden]="col4==='col4'">{{data.office}}</td>
+          <td [hidden]="col5==='col5'">{{data.age}}</td>
+          <td [hidden]="col6==='col6'">{{data.startdate}}</td>
+          <td [hidden]="col7==='col7'">{{data.salary}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <ngb-pagination
+      [(page)]="page"
+      [collectionSize]="person.length"
+      [ellipses]="false"
+      [maxSize]="3" [pageSize]="pageSize" [rotate]="true"
+      style="position: relative;float: right;"></ngb-pagination>
+
+
+  </div>
+</div>
+
